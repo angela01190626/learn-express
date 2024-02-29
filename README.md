@@ -1,4 +1,5 @@
 # Express Tutorial
+Yangjiawen Xu
 
 ## Setup
 - Run `npm install` from the project root.
