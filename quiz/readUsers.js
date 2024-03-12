@@ -15,6 +15,7 @@ let usernames = req.users.map(function(user) {
     res.send(usernames);
 })
 
+// get a specific user
 router.get('/username/:name', (req, res) => {
   const name = req.params.name;
   const users = req.users.filter(person => person.username === name);

@@ -8,7 +8,8 @@ router.use((req, res, next) => {
     console.log('Time: ', Date.now())
     next()
   })
-// define the home page route
+
+// add a new user
 router.post('/addUser', (req, res) => {
     let newuser = req.body;
     req.users.push(newuser);
