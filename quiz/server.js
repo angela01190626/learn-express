@@ -30,7 +30,6 @@ app.use(
   cors({origin: 'http://localhost:3000'})
 );
 app.use('/read/usernames', addMsgToRequest);
-
 app.get('/read/usernames', (req, res) => {
   let usernames = req.users.map(function(user) {
     return {id: user.id, username: user.username};
@@ -38,12 +37,11 @@ app.get('/read/usernames', (req, res) => {
   res.send(usernames);
 });
 
-
-
+// Below 2 lines of code are for POST and PUT requests
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/write/adduser', addMsgToRequest);
 
+app.use('/write/adduser', addMsgToRequest);
 app.post('/write/adduser', (req, res) => {
   let newuser = req.body;
   req.users.push(newuser);
@@ -62,7 +60,7 @@ app.get('/read/username/:name', (req, res) => {
 
   if (users.length === 0) {
     console.log('User not found');
-    return res.status(404).send('User not found');
+    return res.status(404).send(`${name} not found`);
   }
   res.send(users);
 });
