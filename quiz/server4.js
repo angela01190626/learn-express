@@ -15,6 +15,7 @@ fs.readFile(path.resolve(__dirname, '../data/users.json'), function(err, data) {
   users = JSON.parse(data);
 })
 
+// middleware function
 const addMsgToRequest = function (req, res, next) {
   if(users) {
     req.users = users;
@@ -28,6 +29,7 @@ const addMsgToRequest = function (req, res, next) {
   
 }
 
+// middleware function
 app.use(
   cors({origin: 'http://localhost:3000'})
 );
@@ -37,6 +39,7 @@ app.use('/read', readUsers);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/write', writeUsers);
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
